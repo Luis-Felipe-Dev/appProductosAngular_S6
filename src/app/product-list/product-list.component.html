@@ -2,10 +2,13 @@
   <div class="card-header">Listado de Productos</div>
   <div class="card-body">
     <div class="card border-dark mb-3">
-      <!-- <input type="text" class="form-control" id="busqueda"> -->
-      <input type="number" class="form-control" [(ngModel)]="stockBusqueda" placeholder="Ingrese stock mínimo">
-      <button class="btn btn-primary" (click)="buscarPorStock(stockBusqueda)">Buscar</button>
-      <button class="btn btn-secondary" (click)="reloadData()">Limpiar</button>
+      <input type="text" [(ngModel)]="tipoBusqueda" placeholder="Tipo de producto">
+      <button (click)="buscarPorTipo()">Buscar</button>
+      <ul>
+        <li *ngFor="let product of products">
+          {{ product.descripcion }} - {{ product.precio }} - {{ product.tipo }}
+        </li>
+      </ul>
       <table class="table table-dark">
         <thead>
           <tr>
@@ -23,8 +26,7 @@
         <tbody>
           <tr *ngFor="let p of products">
             <td>{{p.codigo}}</td>
-            <td>{{p.descripcion}}</td>
-            <td>{{p.precio}}</td>
+            <td>{{p.nombre}}</td> <td>{{p.precio}}</td>
             <td>{{p.stock}}</td>
             <td>{{p.tipo}}</td>
             <td>{{p.venta}}</td>
@@ -35,7 +37,7 @@
               <button class="btn btn-warning btn-sm">Editar</button>
             </td>
             <td>
-              <button class="btn btn-danger btn-sm" (click)="eliminarProducto(p.codigo)">Eliminar</button>            
+              <button class="btn btn-danger btn-sm" (click)="eliminarProducto(p.codigo)">Eliminar</button>
             </td>
           </tr>
         </tbody>

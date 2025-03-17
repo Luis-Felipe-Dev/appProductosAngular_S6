@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs'; //Reactive Extensions for JavaScript
-import { Product } from '../model/product';
+import { Product, ProductType } from '../model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,12 @@ export class ProductService {
   //Método para registrar un producto
   createProduct(product:Object): Observable<Object>{
     return this.http.post(this.urlBase + "/producto", product, {headers:this.httpHeaders})
+  }
+
+  // a) Agregar a la clase producto el campo “tipo” que puede tener los siguientes valores “Gaseosas, Lácteos y Conservas”,
+  // luego en la opción de listado de productos implementar la búsqueda por tipo de producto. (4 puntos)
+  findByTipo(tipo: ProductType): Observable<Object>{
+    return this.http.get<Product[]>(this.urlBase + `/productosTipo/${tipo}`);
   }
 
   // b) En la opción de listado de productos implementar la búsqueda de productos cuyo stock sea
