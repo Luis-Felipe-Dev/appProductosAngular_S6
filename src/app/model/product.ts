@@ -1,8 +1,8 @@
 
 export enum ProductType {
-    Gaseosas = 'Gaseosas',
-    Lacteos = 'Lácteos',
-    Conservas = 'Conservas'
+    GASEOSAS = 'GASEOSAS',
+    LACTEOS = 'LACTEOS',
+    CONSERVAS = 'CONSERVAS'
   }
   
 export class Product {
